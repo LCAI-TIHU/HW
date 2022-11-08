@@ -1,6 +1,8 @@
 # TIHU-HW
 ## Introduction  
+
 TIHU-Hw is an AI inference processor. TIHU SoC is comprised of RISC-V cpu, nvdla, NoC bus, PCIe module, DDR, SRAM, bootROM, DMA and peripherals.  
+
 SOC parameters:  
 * Support RISC-V instruction set: RV64gcv0p10;  
 * Nvdla config:  
