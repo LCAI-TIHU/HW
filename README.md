@@ -10,5 +10,5 @@ Parameters:
 * Debug: uart;
 
 <div align=center>
-<img src="https://github.com/LCAI-TIHU/SW/tree/main/doc/AIPU_structure.png" width="600" height="300" alt="TIHU"/><br/>
+<img src="https://github.com/LCAI-TIHU/SW/doc/AIPU_structure.png" width="600" height="300" alt="TIHU"/><br/>
 </div>
