@@ -17,6 +17,7 @@ SOC parameters:
 </div>
 
 ## Build FPGA  
+* Follow _Vivado Design Suite User Guide: Release Notes,Installation,and Licensing(UG973)_ to install vivado.   
 
 ## Lisence  
 TIHU is licensed under the Apache-2.0 license. You may obtain a copy of the License at
