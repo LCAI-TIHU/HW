@@ -22,8 +22,12 @@ The function of the PCIe bridge module is to convert the PCIe interface into an 
 
 ## Build FPGA  
 * Follow [_Vivado Design Suite User Guide: Release Notes,Installation,and Licensing(UG973)_](https://docs.xilinx.com/r/en-US/ug973-vivado-release-notes-install-license/Create-and-Generate-a-License-Key-File) to install vivado and download bitstream.   
-* Use this instruction to verify that the bitstream was successfully burned.  
+* Use this instruction to verify that the bitstream was successfully downloaded.  
   ` lspci -vvd 10ee: `
+  
+## TODO
+
+We will release verilog files soon.
 
 ## Lisence  
 TIHU is licensed under the Apache-2.0 license. You may obtain a copy of the License at
