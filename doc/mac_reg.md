@@ -22,7 +22,7 @@
 
 
 ## GLB
-| 寄存器地址 &emsp;&emsp;&emsp;&emsp; | 寄存器名称 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; | Bits &emsp;&emsp;&emsp;&emsp; | 位域名 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; | 读写属性 &emsp;&emsp;&emsp; | 描述 |
+| 寄存器地址 &emsp;&emsp;&emsp;&emsp;&emsp; | 寄存器名称 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; | Bits &emsp;&emsp;&emsp;&emsp; | 位域名 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; | 读写属性 &emsp;&emsp;&emsp;&emsp; | 描述 |
 |-----------|------------------------|---------|-----------------------|------|----------------------------------------------------------------------------------|
 | 32'h1000   | glb_s_nvdla_hw_version |         |                       |      | 硬件版本号寄存器。                      |
 |            |                        | [31:24] | reserved              | -    | reserved                                |
@@ -88,7 +88,7 @@
 
 
 ## MCIF
-| 寄存器地址 &emsp;&emsp;&emsp;&emsp; | 寄存器名称 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; | Bits &emsp;&emsp;&emsp;&emsp; | 位域名 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; | 读写属性 &emsp;&emsp;&emsp; | 描述 |
+| 寄存器地址 &emsp;&emsp;&emsp;&emsp;&emsp; | 寄存器名称 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; | Bits &emsp;&emsp;&emsp;&emsp; | 位域名 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; | 读写属性 &emsp;&emsp;&emsp;&emsp; | 描述 |
 |----------------|--------------------------|---------|--------------------|------|--------------------------------------------------------------|
 | 32'h2000   | mcif_cfg_rd_weight_0     |         |                    |      | 读通道各master的权重，读通道的仲裁采用WRR（weighted round robin，带权重的轮询），该寄存器配置各模块的权重。|
 |            |                          | [31:24] | rd_weight_cdp      | RW   | CDP（master 7）的权重，默认值为1。           |
@@ -123,7 +123,7 @@
 
 
 ## CDMA
-| 寄存器地址 &emsp;&emsp;&emsp;&emsp; | 寄存器名称 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; | Bits &emsp;&emsp;&emsp;&emsp; | 位域名 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; | 读写属性 &emsp;&emsp;&emsp; | 描述 |
+| 寄存器地址 &emsp;&emsp;&emsp;&emsp;&emsp; | 寄存器名称 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; | Bits &emsp;&emsp;&emsp;&emsp; | 位域名 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; | 读写属性 &emsp;&emsp;&emsp;&emsp; | 描述 |
 |---------------------------|------------------------------|---------|---------------------|------|----------------------------------------------------------|
 | 32'h3000   | cdma_s_status                |         |                     |      | 乒乓寄存器组状态寄存器。|
 |            |                              | [31:18] | reserved            | -    | reserved            |
@@ -132,7 +132,7 @@
 |            |                              | [1:0]   | status_0            | RO   | 指示乒乓寄存器组0的状态，<br>0：寄存器组0空闲，可以配置；<br>1：寄存器组0正在被使用，配置无效；<br>2：寄存器组0已经配置完，但还未被使用；<br>3：保留。|
 | 32'h3004   | cdma_s_pointer               |         |                     |      | 乒乓寄存器组指针寄存器。|
 |            |                              | [31:17] | reserved            | -    | reserved            |
-|            |                              | 16      | consumer            | RO   | 指示数据通路执行计算用到的乒乓寄存器组；<br>0：当前使用的是寄存器组0；<br>1：当前使用的是寄存器组1.|
+|            |                              | 16      | consumer            | RO   | 指示数据通路执行计算用到的乒乓寄存器组；<br>0：当前使用的是寄存器组0；<br>1：当前使用的是寄存器组1。|
 |            |                              | [15:1]  | reserved            | -    | reserved            |
 |            |                              | 0       | producer            | RW   | 指示CPU配置的乒乓寄存器组：<br>0：CPU配置寄存器组0；<br>1：CPU配置寄存器组1。|
 | 32'h3008   | cdma_s_arbiter               |         |                     |      |                     |
@@ -262,7 +262,7 @@
 |            |                              | [27:0]  | wmb_bytes           | RW   | WMB的数据量，以byte为单位，当前版本不支持weight compression。|
 | 32'h3098   | cdma_d_mean_format           |         |                     |      | 选择CDMA convertor计算时的偏置。|
 |            |                              | [31:1]  | reserved            | -    | reserved            |
-|            |                              | 0       | mean_format         | RW   | "CDMA convertor计算时的偏置选择配置的平均值还是选择配置的offset；<br>0：选择配置的均值；<br>1：选择配置的offset。|
+|            |                              | 0       | mean_format         | RW   | CDMA convertor计算时的偏置选择配置的平均值还是选择配置的offset；<br>0：选择配置的均值；<br>1：选择配置的offset。|
 | 32'h309c   | cdma_d_mean_global_0         |         |                     |      | CDMA convertor计算需要的均值|
 |            |                              | [31:16] | mean_gu             | RW   | 为CDMA convertor计算配置的均值：ARGB格式下G通道或XYUV格式下U通道的均值。|
 |            |                              | [15:0]  | mean_ry             | RW   | 为CDMA convertor计算配置的均值：ARGB格式下R通道或XYUV格式下Y通道的均值。|
@@ -315,7 +315,7 @@
 |            |                              | [31:0]  | inf_weight_num      | RO   | 输入weight中inf（无限大的数值）的数量，该寄存器未用到。|
 | 32'h30d4   | cdma_d_perf_enable           |         |                     |      | 性能统计使能。      |
 |            |                              | [31:1]  | reserved            | -    | reserved            |
-|            |                              | 0       | dma_en              | RW   | "DMA性能统计使能；<br>0：不使能；<br>1：使能。|
+|            |                              | 0       | dma_en              | RW   | DMA性能统计使能；<br>0：不使能；<br>1：使能。|
 | 32'h30d8   | cdma_d_perf_dat_read_stall   |         |                     |      | 读取data时被阻塞的周期数。|
 |            |                              | [31:0]  | dat_rd_stall        | RO   | data和weight载入过程中data被阻塞的周期数。|
 | 32'h30dc   | cdma_d_perf_wt_read_stall    |         |                     |      | 读取weight时被阻塞的周期数。|
@@ -329,7 +329,7 @@
 
 
 ## CSC
-| 寄存器地址 &emsp;&emsp;&emsp;&emsp; | 寄存器名称 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; | Bits &emsp;&emsp;&emsp;&emsp; | 位域名 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; | 读写属性 &emsp;&emsp;&emsp; | 描述 |
+| 寄存器地址 &emsp;&emsp;&emsp;&emsp;&emsp; | 寄存器名称 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; | Bits &emsp;&emsp;&emsp;&emsp; | 位域名 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; | 读写属性 &emsp;&emsp;&emsp;&emsp; | 描述 |
 |------------------------|--------------------------|---------|--------------------|------|---------------------------------------------------------|
 | 32'h4000   | csc_s_status             |         |                    |      | 乒乓寄存器组状态寄存器。    |
 |            |                          | [31:18] | reserved           | -    | reserved                    |
@@ -338,7 +338,7 @@
 |            |                          | [1:0]   | status_0           | RO   | 指示乒乓寄存器组0的状态，<br>0：寄存器组0空闲，可以配置；<br>1：寄存器组0正在被使用，配置无效；<br>2：寄存器组0已经配置完，但还未被使用；<br>3：保留。|
 | 32'h4004   | csc_s_pointer            |         |                    |      | 乒乓寄存器组指针寄存器。    |
 |            |                          | [31:17] | reserved           | -    | reserved                    |
-|            |                          | 16      | consumer           | RO   | 指示数据通路执行计算用到的乒乓寄存器组；<br>0：当前使用的是寄存器组0；<br>1：当前使用的是寄存器组1.|
+|            |                          | 16      | consumer           | RO   | 指示数据通路执行计算用到的乒乓寄存器组；<br>0：当前使用的是寄存器组0；<br>1：当前使用的是寄存器组1。|
 |            |                          | [15:1]  | reserved           | -    | reserved                    |
 |            |                          | 0       | producer           | RW   | 指示CPU配置的乒乓寄存器组：<br>0：CPU配置寄存器组0；<br>1：CPU配置寄存器组1。|
 | 32'h4008   | csc_d_op_enable          |         |                    |      | CSC使能。                   |
@@ -442,7 +442,7 @@
 
 
 ## CMAC_A
-| 寄存器地址 &emsp;&emsp;&emsp;&emsp; | 寄存器名称 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; | Bits &emsp;&emsp;&emsp;&emsp; | 位域名 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; | 读写属性 &emsp;&emsp;&emsp; | 描述 |
+| 寄存器地址 &emsp;&emsp;&emsp;&emsp;&emsp; | 寄存器名称 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; | Bits &emsp;&emsp;&emsp;&emsp; | 位域名 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; | 读写属性 &emsp;&emsp;&emsp;&emsp; | 描述 |
 |------------------------|--------------------|---------|----------------|------|-------------------------------|
 | 32'h5000   | cmac_a_s_status    |         |                |      | 乒乓寄存器组状态寄存器。      |
 |            |                    | [31:18] | reserved       | -    | reserved                      |
@@ -451,7 +451,7 @@
 |            |                    | [1:0]   | status_0       | RO   | 指示乒乓寄存器组0的状态，<br>0：寄存器组0空闲，可以配置；<br>1：寄存器组0正在被使用，配置无效；<br>2：寄存器组0已经配置完，但还未被使用；<br>3：保留。|
 | 32'h5004   | cmac_a_s_pointer   |         |                |      | 乒乓寄存器组指针寄存器。      |
 |            |                    | [31:17] | reserved       | -    | reserved                      |
-|            |                    | 16      | consumer       | RO   | 指示数据通路执行计算用到的乒乓寄存器组；<br>0：当前使用的是寄存器组0；<br>1：当前使用的是寄存器组1.|
+|            |                    | 16      | consumer       | RO   | 指示数据通路执行计算用到的乒乓寄存器组；<br>0：当前使用的是寄存器组0；<br>1：当前使用的是寄存器组1。|
 |            |                    | [15:1]  | reserved       | -    | reserved                      |
 |            |                    | 0       | producer       | RW   | 指示CPU配置的乒乓寄存器组：<br>0：CPU配置寄存器组0；<br>1：CPU配置寄存器组1。|
 | 32'h5008   | cmac_a_d_op_enable |         |                |      | CMAC_A使能寄存器。            |
@@ -465,7 +465,7 @@
 
 
 ## CMAC_B
-| 寄存器地址 &emsp;&emsp;&emsp;&emsp; | 寄存器名称 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; | Bits &emsp;&emsp;&emsp;&emsp; | 位域名 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; | 读写属性 &emsp;&emsp;&emsp; | 描述 |
+| 寄存器地址 &emsp;&emsp;&emsp;&emsp;&emsp; | 寄存器名称 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; | Bits &emsp;&emsp;&emsp;&emsp; | 位域名 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; | 读写属性 &emsp;&emsp;&emsp;&emsp; | 描述 |
 |------------------------|--------------------|---------|----------------|------|-------------------------------|
 | 32'h6000   | cmac_a_s_status    |         |                |      | 乒乓寄存器组状态寄存器。      |
 |            |                    | [31:18] | reserved       | -    | reserved                      |
@@ -474,7 +474,7 @@
 |            |                    | [1:0]   | status_0       | RO   | 指示乒乓寄存器组0的状态，<br>0：寄存器组0空闲，可以配置；<br>1：寄存器组0正在被使用，配置无效；<br>2：寄存器组0已经配置完，但还未被使用；<br>3：保留。|
 | 32'h6004   | cmac_a_s_pointer   |         |                |      | 乒乓寄存器组指针寄存器。      |
 |            |                    | [31:17] | reserved       | -    | reserved                      |
-|            |                    | 16      | consumer       | RO   | 指示数据通路执行计算用到的乒乓寄存器组；<br>0：当前使用的是寄存器组0；<br>1：当前使用的是寄存器组1.|
+|            |                    | 16      | consumer       | RO   | 指示数据通路执行计算用到的乒乓寄存器组；<br>0：当前使用的是寄存器组0；<br>1：当前使用的是寄存器组1。|
 |            |                    | [15:1]  | reserved       | -    | reserved                      |
 |            |                    | 0       | producer       | RW   | 指示CPU配置的乒乓寄存器组：<br>0：CPU配置寄存器组0；<br>1：CPU配置寄存器组1。|
 | 32'h6008   | cmac_a_d_op_enable |         |                |      | CMAC_B使能寄存器。            |
@@ -488,7 +488,7 @@
 
 
 ## CACC
-| 寄存器地址 &emsp;&emsp;&emsp;&emsp; | 寄存器名称 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; | Bits &emsp;&emsp;&emsp;&emsp; | 位域名 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; | 读写属性 &emsp;&emsp;&emsp; | 描述 |
+| 寄存器地址 &emsp;&emsp;&emsp;&emsp;&emsp; | 寄存器名称 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; | Bits &emsp;&emsp;&emsp;&emsp; | 位域名 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; | 读写属性 &emsp;&emsp;&emsp;&emsp; | 描述 |
 |------------------------|-----------------------|---------|-----------------|------|-------------------------------------------|
 | 32'h7000   | cacc_s_status         |         |                 |      | 乒乓寄存器组状态寄存器。          |
 |            |                       | [31:18] | reserved        | -    | reserved                          |
@@ -497,12 +497,12 @@
 |            |                       | [1:0]   | status_0        | RO   | 指示乒乓寄存器组0的状态，<br>0：寄存器组0空闲，可以配置；<br>1：寄存器组0正在被使用，配置无效；<br>2：寄存器组0已经配置完，但还未被使用；<br>3：保留。|
 | 32'h7004   | cacc_s_pointer        |         |                 |      | 乒乓寄存器组指针寄存器。          |
 |            |                       | [31:17] | reserved        | -    | reserved                          |
-|            |                       | 16      | consumer        | RO   | 指示数据通路执行计算用到的乒乓寄存器组；<br>0：当前使用的是寄存器组0；<br>1：当前使用的是寄存器组1.|
+|            |                       | 16      | consumer        | RO   | 指示数据通路执行计算用到的乒乓寄存器组；<br>0：当前使用的是寄存器组0；<br>1：当前使用的是寄存器组1。|
 |            |                       | [15:1]  | reserved        | -    | reserved                          |
 |            |                       | 0       | producer        | RW   | 指示CPU配置的乒乓寄存器组：<br>0：CPU配置寄存器组0；<br>1：CPU配置寄存器组1。|
 | 32'h7008   | cacc_d_op_enable      |         |                 |      | CACC使能寄存器。                  |
 |            |                       | [31:1]  | reserved        | -    | reserved                          |
-|            |                       | 0       | op_en           | RW   | "CACC使能（该寄存器的读出值与写入值不一定相同）；<br>0：不使能；<br>1：使能。|
+|            |                       | 0       | op_en           | RW   | CACC使能（该寄存器的读出值与写入值不一定相同）；<br>0：不使能；<br>1：使能。|
 | 32'h700c   | cacc_d_misc_cfg       |         |                 |      | CACC配置寄存器。                  |
 |            |                       | [31:14] | reserved        | -    | reserved                          |
 |            |                       | [13:12] | proc_precision  | RW   | 数据处理精度；<br>0：int8；<br>1：int16，当前版本不支持；<br>2：fp16，当前版本不支持；<br>3：保留。|
@@ -542,7 +542,7 @@
 
 
 ## SDP_RDMA
-| 寄存器地址 &emsp;&emsp;&emsp;&emsp; | 寄存器名称 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; | Bits &emsp;&emsp;&emsp;&emsp; | 位域名 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; | 读写属性 &emsp;&emsp;&emsp; | 描述 |
+| 寄存器地址 &emsp;&emsp;&emsp;&emsp;&emsp; | 寄存器名称 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; | Bits &emsp;&emsp;&emsp;&emsp; | 位域名 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; | 读写属性 &emsp;&emsp;&emsp;&emsp; | 描述 |
 |--------------------------------------|-----------------------------------|---------|-----------------------|------|---------------------------------|
 | 32'h8000   | sdp_rdma_s_status                 |         |                       |      | 乒乓寄存器组状态寄存器。|
 |            |                                   | [31:18] | reserved              | -    | reserved |
@@ -551,7 +551,7 @@
 |            |                                   | [1:0]   | status_0              | RO   | 指示乒乓寄存器组0的状态，<br>0：寄存器组0空闲，可以配置；<br>1：寄存器组0正在被使用，配置无效；<br>2：寄存器组0已经配置完，但还未被使用；<br>3：保留。|
 | 32'h8004   | sdp_rdma_s_pointer                |         |                       |      | 乒乓寄存器组指针寄存器。|
 |            |                                   | [31:17] | reserved              | -    | reserved |
-|            |                                   | 16      | consumer              | RO   | 指示数据通路执行计算用到的乒乓寄存器组；<br>0：当前使用的是寄存器组0；<br>1：当前使用的是寄存器组1.|
+|            |                                   | 16      | consumer              | RO   | 指示数据通路执行计算用到的乒乓寄存器组；<br>0：当前使用的是寄存器组0；<br>1：当前使用的是寄存器组1。|
 |            |                                   | [15:1]  | reserved              | -    | reserved |
 |            |                                   | 0       | producer              | RW   | 指示CPU配置的乒乓寄存器组：<br>0：CPU配置寄存器组0；<br>1：CPU配置寄存器组1。|
 | 32'h8008   | sdp_rdma_d_op_enable              |         |                       |      | SDP_RDMA使能。|
@@ -576,7 +576,7 @@
 |            |                                   | [31:0]  | src_surface_stride    | RW   | MRDMA读取数据时相邻surface之间的地址偏移。|
 | 32'h8028   | sdp_rdma_d_brdma_cfg              |         |                       |      | BRDMA配置寄存器。                         |
 |            |                                   | [31:6]  | reserved              | -    | reserved                                  |
-|            |                                   | 5       | brdma_ram_type        | RW   | BRDMA读取数据的memory类型；<br>0：SRAM；<br>1：DRAM；|
+|            |                                   | 5       | brdma_ram_type        | RW   | BRDMA读取数据的memory类型；<br>0：SRAM；<br>1：DRAM。|
 |            |                                   | 4       | brdma_data_mode       | RW   | BRDMA读取操作数的数据量；<br>0：每通道一个操作数（per kernel）；<br>1：每个输入数据一个操作数（per element）。|
 |            |                                   | 3       | brdma_data_size       | RW   | BRDMA读取操作数的每个元素的位宽；<br>0：1 byte；<br>1：2 byte。|
 |            |                                   | [2:1]   | brdma_data_use        | RW   | BRDMA读取的数据种类；<br>0：只需要MUL的操作数；<br>1：只需要ALU的操作数；<br>2：需要MUL和ALU的操作数；<br>3：保留。|
@@ -593,7 +593,7 @@
 |            |                                   | [31:0]  | bs_batch_stride       | RW   | BRDMA读取数据时相邻batch之间的地址偏移。   |
 | 32'h8040   | sdp_rdma_d_nrdma_cfg              |         |                       |      | NRDMA配置寄存器。                          |
 |            |                                   | [31:6]  | reserved              | -    | reserved                                   |
-|            |                                   | 5       | nrdma_ram_type        | RW   | NRDMA读取数据的memory类型；<br>0：SRAM；<br>1：DRAM；|
+|            |                                   | 5       | nrdma_ram_type        | RW   | NRDMA读取数据的memory类型；<br>0：SRAM；<br>1：DRAM。|
 |            |                                   | 4       | nrdma_data_mode       | RW   | NRDMA读取操作数的数据量；<br>0：每通道一个操作数（per kernel）；<br>1：每个输入数据一个操作数（per element）。|
 |            |                                   | 3       | nrdma_data_size       | RW   | NRDM读取操作数的每个元素的位宽；<br>0：1 byte；<br>1：2 byte。|
 |            |                                   | [2:1]   | nrdma_data_use        | RW   | NRDMA读取的数据种类；<br>0：只需要MUL的操作数；<br>1：只需要ALU的操作数；<br>2：需要MUL和ALU的操作数；<br>3：保留。|
@@ -635,12 +635,12 @@
 |            |                                   | 0       | flying_mode           | RW   | SDP的运行模式；<br>0：off-fly模式，输入来自DRAM或SRAM，此时MRDMA开启；<br>1：on-fly模式，输入来自前级的CACC模块，此时MRDMA关闭。|
 | 32'h8074   | sdp_rdma_d_src_dma_cfg            |         |                       |      | memory类型配置寄存器。                     |
 |            |                                   | [31:1]  | reserved              | -    | reserved                                   |
-|            |                                   | 0       | src_ram_type          | RW   | MRDMA所读取的数据存储的memory类型；<br>0：SRAM；<br>1：DRAM；|
+|            |                                   | 0       | src_ram_type          | RW   | MRDMA所读取的数据存储的memory类型；<br>0：SRAM；<br>1：DRAM。|
 | 32'h8078   | sdp_rdma_d_status_nan_input_num   |         |                       |      | MRDMA输入数据中nan的数量。                 |
 |            |                                   | [31:0]  | status_nan_input_num  | RO   | MRDMA输入数据中nan的数量，该寄存器未用到。 |
 | 32'h807c   | sdp_rdma_d_status_inf_input_num   |         |                       |      | MRDMA输入数据中inf的数量                   |
 |            |                                   | [31:0]  | status_inf_input_num  | RO   | MRDMA输入数据中inf的数量，该寄存器未用到。 |
-| 32'h8080   | sdp_rdma_d_perf_enable            |         |                       |      | 性能统计使能，                             |
+| 32'h8080   | sdp_rdma_d_perf_enable            |         |                       |      | 性能统计使能。                             |
 |            |                                   | [31:2]  | reserved              | -    | reserved                                   |
 |            |                                   | 1       | perf_nan_inf_count_en | RW   | 该位域未用到。                             |
 |            |                                   | 0       | perf_dma_en           | RW   | RDMA性能统计使能；<br>0：不使能；<br>1：使能。|
@@ -655,7 +655,7 @@
 
 
 ## SDP
-| 寄存器地址 &emsp;&emsp;&emsp;&emsp; | 寄存器名称 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; | Bits &emsp;&emsp;&emsp;&emsp; | 位域名 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; | 读写属性 &emsp;&emsp;&emsp; | 描述 |
+| 寄存器地址 &emsp;&emsp;&emsp;&emsp;&emsp; | 寄存器名称 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; | Bits &emsp;&emsp;&emsp;&emsp; | 位域名 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; | 读写属性 &emsp;&emsp;&emsp;&emsp; | 描述 |
 |------------------------------|------------------------------------|---------|--------------------------|------|-----------------------------------------------------|
 | 32'h9000   | sdp_s_status                       |         |                          |      | 乒乓寄存器组状态寄存器。                               |
 |            |                                    | [31:18] | reserved                 | -    | reserved                                               |
@@ -664,7 +664,7 @@
 |            |                                    | [1:0]   | status_0                 | RO   | 指示乒乓寄存器组0的状态，<br>0：寄存器组0空闲，可以配置；<br>1：寄存器组0正在被使用，配置无效；<br>2：寄存器组0已经配置完，但还未被使用；<br>3：保留。|
 | 32'h9004   | sdp_s_pointer                      |         |                          |      | 乒乓寄存器组指针寄存器。                               |
 |            |                                    | [31:17] | reserved                 | -    | reserved                                               |
-|            |                                    | 16      | consumer                 | RO   | 指示数据通路执行计算用到的乒乓寄存器组；<br>0：当前使用的是寄存器组0；<br>1：当前使用的是寄存器组1.|
+|            |                                    | 16      | consumer                 | RO   | 指示数据通路执行计算用到的乒乓寄存器组；<br>0：当前使用的是寄存器组0；<br>1：当前使用的是寄存器组1。|
 |            |                                    | [15:1]  | reserved                 | -    | reserved                                               |
 |            |                                    | 0       | producer                 | RW   | 指示CPU配置的乒乓寄存器组：<br>0：CPU配置寄存器组0；<br>1：CPU配置寄存器组1。|
 | 32'h9008   | sdp_s_lut_access_cfg               |         |                          |      | LUT访问配置寄存器。                                    |
@@ -672,7 +672,7 @@
 |            |                                    | 17      | lut_access_type          | RW   | 选择对LUT的访问类型；<br>0：读LUT；<br>1：写LUT。      |
 |            |                                    | 16      | lut_table_id             | RW   | 选择访问哪一张LUT表；<br>0：X lut（LE，linear/exponent）；<br>1：Y lut（LO，linear only）。|
 |            |                                    | [15:10] | reserved                 | -    | reserved                                               |
-|            |                                    | [9:0]   | lut_addr                 | RW   | 读写LUT的地址，LE：0~64；LO：0~256。                   |
+|            |                                    | [9:0]   | lut_addr                 | RW   | 读写LUT的地址，<br>LE：0-64；<br>LO：0-256。           |
 | 32'h900c   | sdp_s_lut_access_data              |         |                          |      | 当前LUT表项中的值。                                    |
 |            |                                    | [31:16] | reserved                 | -    | reserved                                               |
 |            |                                    | [15:0]  | lut_data                 | RO   | LUT中表项的值。                                        |
@@ -685,11 +685,11 @@
 |            |                                    | 0       | lut_le_function          | RW   | LE LUT的工作模式；<br>0：指数LUT模式；<br>1：线性LUT模式。|
 | 32'h9014   | sdp_s_lut_info                     |         |                          |      |                                                        |
 |            |                                    | [31:24] | reserved                 | -    | reserved                                               |
-|            |                                    | [23:16] | lut_lo_index_select      | RW   | LO LUT 查表index计算公式中的-M                         |
-|            |                                    | [15:8]  | lut_le_index_select      | RW   | LE LUT 线性模式查表index计算公式中的-M                 |
-|            |                                    | [7:0]   | lut_le_index_offset      | RW   | LE LUT指数模式查表inde计算公式中的M+exp_start          |
+|            |                                    | [23:16] | lut_lo_index_select      | RW   | LO LUT 查表index计算公式中的-M。                       |
+|            |                                    | [15:8]  | lut_le_index_select      | RW   | LE LUT 线性模式查表index计算公式中的-M。               |
+|            |                                    | [7:0]   | lut_le_index_offset      | RW   | LE LUT指数模式查表inde计算公式中的M+exp_start。        |
 | 32'h9018   | sdp_s_lut_le_start                 |         |                          |      |                                                        |
-|            |                                    | [31:0]  | lut_le_start             | RW   | LE LUT指数模式查表inde计算公式中的Sfin(linear_start-Oin) |
+|            |                                    | [31:0]  | lut_le_start             | RW   | LE LUT指数模式查表inde计算公式中的Sfin(linear_start-Oin)。 |
 | 32'h901c   | sdp_s_lut_le_end                   |         |                          |      |                                                        |
 |            |                                    | [31:0]  | lut_le_end               | RW   | LE LUT  inde的最大值。                                 |
 | 32'h9020   | sdp_s_lut_lo_start                 |         |                          |      |                                                        |
@@ -827,7 +827,7 @@
 |            |                                    | 0       | flying_mode              | RW   | SDP的运行模式；<br>0：off-fly模式，输入来自DRAM或SRAM；<br>1：on-fly模式，输入来自前级的CACC模块。|
 | 32'h90b4   | sdp_d_dst_dma_cfg                  |         |                          |      | 数据写出时memory的类型。                               |
 |            |                                    | [31:1]  | reserved                 | -    | reserved                                               |
-|            |                                    | 0       | dst_ram_type             | RW   | 写出数据时memory的类型；<br>0：SRAM；<br>1：DRAM；     |
+|            |                                    | 0       | dst_ram_type             | RW   | 写出数据时memory的类型；<br>0：SRAM；<br>1：DRAM。     |
 | 32'h90b8   | sdp_d_dst_batch_stride             |         |                          |      | 写出数据相邻batch之间的地址偏移。                      |
 |            |                                    | [31:0]  | dst_batch_stride         | RW   | 写出数据时相邻batch之间的地址偏移。                    |
 | 32'h90bc   | sdp_d_data_format                  |         |                          |      | 数据格式配置。                                         |
@@ -874,7 +874,7 @@
 
 
 ## CVIF
-| 寄存器地址 &emsp;&emsp;&emsp;&emsp; | 寄存器名称 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; | Bits &emsp;&emsp;&emsp;&emsp; | 位域名 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; | 读写属性 &emsp;&emsp;&emsp; | 描述 |
+| 寄存器地址 &emsp;&emsp;&emsp;&emsp;&emsp; | 寄存器名称 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; | Bits &emsp;&emsp;&emsp;&emsp; | 位域名 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; | 读写属性 &emsp;&emsp;&emsp;&emsp; | 描述 |
 |----------------|--------------------------|---------|--------------------|------|--------------------------------------------------------------|
 | 32'hf000   | mcif_cfg_rd_weight_0     |         |                    |      | 读通道各master的权重，读通道的仲裁采用WRR（weighted round robin，带权重的轮询），该寄存器配置各模块的权重。|
 |            |                          | [31:24] | rd_weight_cdp      | RW   | CDP（master 7）的权重，默认值为1。                                      |
