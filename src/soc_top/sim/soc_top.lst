@@ -1,0 +1,6 @@
+-f $WORKAREA/design_repo/rtl_v0.8/soc_top/sim/core_top.lst
+-f $WORKAREA/design_repo/rtl_v0.8/soc_top/sim/uncore_top_file.lst
+$WORKAREA/design_repo/rtl_v0.8/soc_top/rtl/sv/jtag_mux.sv
+$WORKAREA/design_repo/rtl_v0.8/soc_top/rtl/sv/glbl.v
+$WORKAREA/design_repo/rtl_v0.8/soc_top/rtl/sv/soc_top.sv
+

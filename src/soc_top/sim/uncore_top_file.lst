@@ -1,0 +1,45 @@
+################################################## scu_top flist ##########################
++incdir+$WORKAREA/design_repo/rtl_v0.8/scu/rtl/register/rtl/include/
++incdir+$WORKAREA/design_repo/rtl_v0.8/scu/rtl/rgu/rtl/include/
+//+incdir+$WORKAREA/env_repo/internal_ip/wdt/rtl/include/
+###TOP
+$WORKAREA/design_repo/rtl_v0.8/scu/rtl/top/sv/scu_top.sv
+
+//CGU
+$WORKAREA/design_repo/rtl_v0.8/scu/rtl/cgu/rtl/sv/cgu_top.sv
+$WORKAREA/design_repo/rtl_v0.8/scu/rtl/cgu/rtl/sv/clk_even_div.sv
+
+//TIMER COUNTER
+$WORKAREA/design_repo/rtl_v0.8/scu/rtl/top/sv/scu_uts_counter.sv
+
+//MAIN RGU
+$WORKAREA/design_repo/rtl_v0.8/scu/rtl/rgu/rtl/sv/rgu_top.sv
+$WORKAREA/design_repo/rtl_v0.8/scu/rtl/rgu/rtl/sv/main_boot_fsm.sv
+$WORKAREA/design_repo/rtl_v0.8/scu/rtl/rgu/rtl/sv/reset_common.sv
+
+//MMCM
+$WORKAREA/design_repo/xilinx_ip/mmcm_20m/mmcm.v
+$WORKAREA/design_repo/xilinx_ip/mmcm_20m/mmcm_clk_wiz.v
+
+//WDT
+///nfs/home/release/internal_ip/wdt/v0.8.0/rtl/sv/wdt_kernel.sv
+
+//REGISTER
+$WORKAREA/design_repo/rtl_v0.8/scu/rtl/register/rtl/sv/main_scu_register_top_wrapper.sv
+$WORKAREA/design_repo/rtl_v0.8/scu/rtl/register/rtl/sv/main_scu_ahb2esram_async_bridge.sv
+$WORKAREA/design_repo/rtl_v0.8/scu/rtl/register/rtl/sv/main_scu_bac_common_interrupt_handle.sv
+$WORKAREA/design_repo/rtl_v0.8/scu/rtl/register/rtl/sv/main_scu_bus_access_control_top.sv
+$WORKAREA/design_repo/rtl_v0.8/scu/rtl/register/rtl/sv/main_scu_bac_misc.sv
+$WORKAREA/design_repo/rtl_v0.8/scu/rtl/register/rtl/sv/main_scu_bac_address_decoder.sv
+$WORKAREA/design_repo/rtl_v0.8/scu/rtl/register/rtl/sv/main_scu_bac_register_block.sv
+$WORKAREA/design_repo/rtl_v0.8/scu/rtl/register/rtl/sv/main_scu_register_bank.sv
+$WORKAREA/design_repo/rtl_v0.8/scu/rtl/register/rtl/sv/main_scu_bac_register_wrapper.sv
+
+
+################################################## common cell and common blocks flist ##########################
+#################################################### common cell and common blocks flist ##########################
+
+$WORKAREA/design_repo/rtl_v0.8/soc_top/rtl/sv/uncore_top.sv
+$WORKAREA/design_repo/rtl_v0.8/soc_top/rtl/sv/per_subsys.sv
+$WORKAREA/design_repo/rtl_v0.8/soc_top/rtl/sv/cpu_subsys.sv
+
